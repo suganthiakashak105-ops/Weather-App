@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic page settings -->
+  <meta charset="UTF-8" />
+  <!-- This line makes the page responsive on mobile phones -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+
+  <!-- Google Font: Poppins (modern, clean typography) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Link our CSS file -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Main container that holds the whole app -->
+  <main class="app">
+
+    <!-- ===== Header ===== -->
+    <header class="app-header">
+      <h1 class="app-title">🌤️ Weather App</h1>
+      <p class="app-subtitle">Check the live weather of any city</p>
+      <!-- This badge is shown by JavaScript only when we are in demo mode -->
+      <span id="demo-badge" class="demo-badge hidden">
+        Demo Mode · Showing sample data
+      </span>
+    </header>
+
+    <!-- ===== Search bar ===== -->
+    <div class="search-box">
+      <input
+        type="text"
+        id="city-input"
+        placeholder="Search city, e.g. London"
+        autocomplete="off"
+        aria-label="City name"
+      />
+      <button id="search-btn" type="button">Search</button>
+    </div>
+
+    <!-- ===== Loading indicator (hidden by default) ===== -->
+    <div id="loading" class="loading hidden" role="status">
+      <div class="spinner"></div>
+      <p>Fetching weather...</p>
+    </div>
+
+    <!-- ===== Error message (hidden by default) ===== -->
+    <div id="error-message" class="error hidden" role="alert"></div>
+
+    <!-- ===== Weather results (hidden until we have data) ===== -->
+    <section id="weather-content" class="hidden">
+
+      <!-- Current weather card -->
+      <article class="glass-card current-card">
+        <div class="location">
+          <h2 id="city-name">City, Country</h2>
+          <p id="date-text">Today</p>
+        </div>
+
+        <div class="current-main">
+          <div id="weather-icon" class="weather-icon">⛅</div>
+          <div class="temp-block">
+            <p id="temperature" class="temperature">0°C</p>
+            <p id="condition" class="condition">Condition</p>
+          </div>
+        </div>
+
+        <!-- Humidity, wind and feels-like -->
+        <div class="details">
+          <div class="detail-item">
+            <span class="detail-icon">💧</span>
+            <span class="detail-value" id="humidity">0%</span>
+            <span class="detail-label">Humidity</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">💨</span>
+            <span class="detail-value" id="wind">0 km/h</span>
+            <span class="detail-label">Wind</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">🌡️</span>
+            <span class="detail-value" id="feels-like">0°C</span>
+            <span class="detail-label">Feels Like</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Forecast cards -->
+      <h3 class="section-title">5-Day Forecast</h3>
+      <div id="forecast-container" class="forecast-grid">
+        <!-- JavaScript will add the forecast cards here -->
+      </div>
+    </section>
+
+    <footer class="app-footer">
+      <p>Built with HTML, CSS &amp; JavaScript · Data from OpenWeatherMap</p>
+    </footer>
+  </main>
+
+  <!-- Link our JavaScript file (at the end so the HTML loads first) -->
+  <script src="script.js"></script>
+</body>
+</html>
